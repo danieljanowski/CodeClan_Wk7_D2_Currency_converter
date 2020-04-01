@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/bundle.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Currency Converter</h1>
+        <hr>
+
+        <h3>Convert EUR to chosen currency</h3>
+        <label for="currency-select">Convert:</label>
+        <span><input placeholder="Amount" type="number" v-model.number="amountEUR">EUR => </span>
+        <select id="currency-select" v-model="selectedCurrencyFromEUR">
+            <option v-for="(currencyRate, currencySymbol) in currencies.rates" :value="currencySymbol">{{currencySymbol}}</option>
+        </select>
+        <span> = {{convertedFromEUR}}</span>
+        <br><br><hr>
+
+        <h3>Convert chosen currency to EUR</h3>
+        <label for="currency-select">Convert:</label>
+        <span><input placeholder="Amount" type="number" v-model.number="amountCurrency"></span>
+        <select id="currency-select" v-model="selectedCurrencyToEUR">
+            <option v-for="(currencyRate, currencySymbol) in currencies.rates" :value="currencySymbol">{{currencySymbol}}</option>
+        </select>
+        <span> => EUR = {{convertedToEUR}}</span>
+        <br><br><hr>
+
+        <h3>Convert any currency</h3>
+        <label for="currency-select">Convert:</label>
+        <span><input placeholder="Amount" type="number" v-model.number="amountAnyCurrency"></span>
+        <select id="currency-select" v-model="selectedFirstCurrency">
+            <option v-for="(currencyRate, currencySymbol) in currencies.rates" :value="currencySymbol">{{currencySymbol}}</option>
+        </select>
+        <span>to: </span>
+        <select id="currency-select" v-model="selectedSecondCurrency">
+            <option v-for="(currencyRate, currencySymbol) in currencies.rates" :value="currencySymbol">{{currencySymbol}}</option>
+        </select>
+         <span> = {{converted}}</span>
+         <br><br><hr>
+        </div>
+</body>
+</html>
